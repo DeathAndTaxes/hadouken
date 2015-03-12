@@ -11,7 +11,7 @@
            Language="1033"
            Codepage="1252">
 
-    <Package Id="*" InstallScope="perMachine" Compressed="yes" />
+    <Package Id="*" InstallerVersion="300" InstallScope="perMachine" Compressed="yes" />
 
     <Media Id="1" Cabinet="hdkn.cab" EmbedCab="yes" />
     
@@ -67,13 +67,15 @@
 
     <Property Id="HDKN_BUILDVERSION" Value="$(var.BuildVersion)" />
     <Property Id="HDKN_GITREV" Value="$(var.GitRevision)" />
+    <Property Id="HDKN_HTTP_AUTH" Value="none" />
+    <Property Id="HDKN_HTTP_PORT" Value="7070" />
 
-    <!-- The UI parts -->
-    <UIRef Id="WixUI_FeatureTree" />
-    <UIRef Id="WixUI_ErrorProgressText" />
+    <SetProperty Id="HDKN_BITTORRENT_SAVE_PATH" Value="[%USERPROFILE]\Downloads" Before="CostFinalize" /> 
 
-    <WixVariable Id="WixUIBannerBmp" Value="installer/media/banner.bmp" />
-    <WixVariable Id="WixUIDialogBmp" Value="installer/media/dialog.bmp" />
+    <UIRef Id="HadoukenUI" />
+
     <WixVariable Id="WixUILicenseRtf" Value="../../../LICENSE.rtf" />
+    
+    <Binary Id="HadoukenUI_Bmp_Banner" SourceFile="installer/media/banner.bmp" />
   </Product>
 </Wix>

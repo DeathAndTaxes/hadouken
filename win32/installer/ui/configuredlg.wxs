@@ -3,11 +3,11 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
         <UI>      
-            <Dialog Id="HadoukenConfigureDlg" Width="370" Height="270" Title="[ProductName] [Setup]" NoMinimize="yes">
+            <Dialog Id="ConfigureDlg" Width="370" Height="270" Title="[ProductName] [Setup]" NoMinimize="yes">
                 <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
                 <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
 
-                <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="HadoukenUI_Bmp_Banner" />
+                <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="HdknUI_Bmp_Banner" />
 
                 <Control Id="Title" Type="Text" X="10" Y="12" Width="200" Height="20" Transparent="yes" NoPrefix="yes" Text="{\DlgTitleFont}Configuration" />
 
@@ -16,9 +16,7 @@
 
                 <Control Id="DefaultSavePathTitle" Type="Text" X="17" Y="70" Width="100" Height="12" Text="Default download path" />
 
-                <Control Id="DefaultSavePath" Type="PathEdit" X="122" Y="67" Width="168" Height="18" Property="HDKN_BITTORRENT_SAVE_PATH" />
-
-                <Control Id="DefaultSavePathChange" Type="PushButton" X="293" Y="67" Width="60" Height="17" Text="&amp;Change..." />
+                <Control Id="DefaultSavePath" Type="Edit" X="122" Y="67" Width="232" Height="18" Property="HDKN_BITTORRENT_SAVE_PATH" />
 
                 <!-- HTTP settings -->
                 <Control Id="Http" Type="GroupBox" X="10" Y="100" Width="350" Height="103" Text="HTTP settings" />
@@ -74,11 +72,11 @@
                 <Control Id="Back" Type="PushButton" X="180" Y="245" Width="56" Height="17" Text="Back" />
 
                 <Control Id="Next" Type="PushButton" X="236" Y="245" Width="56" Height="17" Default="yes" Text="Next">
-                    <Publish Event="EndDialog" Value="Return" />
+                    <Publish Event="NewDialog" Value="CustomizeDlg">1</Publish>
                 </Control>
 
                 <Control Id="Cancel" Type="PushButton" X="304" Y="245" Width="56" Height="17" Text="Cancel">
-                    <Publish Event="SpawnDialog" Value="HadoukenCancelDlg">1</Publish>
+                    <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
                 </Control>
             </Dialog>
         </UI>

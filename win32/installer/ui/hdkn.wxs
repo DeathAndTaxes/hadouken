@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  <copyright file="WixUI_FeatureTree.wxs" company="Outercurve Foundation">
-    Copyright (c) 2004, Outercurve Foundation.
-    This software is released under Microsoft Reciprocal License (MS-RL).
-    The license and further copyright text can be found in the file
-    LICENSE.TXT at the root directory of the distribution.
-  </copyright>
--->
 
 <!--
 First-time install dialog sequence:
- - HadoukenWelcomeDlg
- - HadoukenConfigureDlg
- - HadoukenFeaturesDlg
-
+ - WelcomeDlg
+ - ConfigureDlg
+ - CustomizeDlg
+ - ProgressDlg
 -->
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
-        <UI Id="HadoukenUI">
+        <Binary Id="HdknUI_Ico_Info"   SourceFile="installer/media/information.ico" />
+        <Binary Id="HdknUI_Bmp_Banner" SourceFile="installer/media/banner.bmp" />
+
+        <WixVariable Id="HdknUILicenseRtf" Value="../../../LICENSE.rtf" />
+
+        <UI Id="HdknUI">
             <Property Id="DefaultUIFont">DlgFont8</Property>
       
             <TextStyle Id="DlgFont8" FaceName="Tahoma" Size="8" />
             <TextStyle Id="DlgTitleFont" FaceName="Tahoma" Size="14" />
 
-            <DialogRef Id="HadoukenWelcomeDlg" />
-            <DialogRef Id="HadoukenConfigureDlg" />
-            <DialogRef Id="HadoukenBrowseDlg" />
+            <DialogRef Id="WelcomeDlg" />
+            <DialogRef Id="ConfigureDlg" />
+            <DialogRef Id="CustomizeDlg" />
+            <DialogRef Id="ProgressDlg" />
 
-            <Publish Dialog="HadoukenWelcomeDlg" Control="Back" Event="NewDialog" Value="HadoukenWelcomeDlg">1</Publish>
-            <Publish Dialog="HadoukenWelcomeDlg" Control="Next" Event="NewDialog" Value="HadoukenConfigureDlg">1</Publish>
+            <Publish Dialog="WelcomeDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
+            <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="ConfigureDlg">1</Publish>
 
-            <Publish Dialog="HadoukenConfigureDlg" Control="Back" Event="NewDialog" Value="HadoukenWelcomeDlg">1</Publish>
+            <Publish Dialog="ConfigureDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
 
-            <Publish Dialog="HadoukenConfigureDlg" Control="DefaultSavePathChange" Property="_BrowseProperty" Value="HDKN_BITTORRENT_SAVE_PATH" Order="1">1</Publish>
-            <Publish Dialog="HadoukenConfigureDlg" Control="DefaultSavePathChange" Event="SpawnDialog" Value="HadoukenBrowseDlg" Order="2">1</Publish>
+            <Publish Dialog="CustomizeDlg" Control="Back" Event="NewDialog" Value="ConfigureDlg">1</Publish>
+
+            <InstallUISequence>
+                <Show Dialog="WelcomeDlg" After="CostFinalize">NOT Installed</Show>
+                <Show Dialog="ProgressDlg" Before="ExecuteAction" />
+            </InstallUISequence>
         </UI>
-
-        <UIRef Id="WixUI_Common" />
     </Fragment>
 </Wix>

@@ -72,10 +72,6 @@
 
     <SetProperty Id="HDKN_BITTORRENT_SAVE_PATH" Value="[%USERPROFILE]\Downloads" Before="CostFinalize" /> 
 
-    <UIRef Id="HadoukenUI" />
-
-    <WixVariable Id="WixUILicenseRtf" Value="../../../LICENSE.rtf" />
-    
-    <Binary Id="HadoukenUI_Bmp_Banner" SourceFile="installer/media/banner.bmp" />
+    <UIRef Id="HdknUI" />    
   </Product>
 </Wix>

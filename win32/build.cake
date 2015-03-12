@@ -24,7 +24,7 @@ Task("Clean")
             binDirectory,
             outDirectory,
             "./build/" + configuration,
-            "./wixobj"
+            "./build/wixobj"
         });
     });
 
@@ -176,7 +176,7 @@ Task("Create-Msi-Package")
 
         WiXLight("./build/wixobj/*.wixobj", new LightSettings
         {
-            Extensions = new[] { "WixUtilExtension", "WixUIExtension", "WixFirewallExtension" },
+            Extensions = new[] { "WixUtilExtension", "WixFirewallExtension" },
             OutputFile = outDirectory + "/hadouken-" + version + "-win32.msi",
             ToolPath = "./libs/WiX.Toolset/tools/wix/light.exe",
             RawArguments = "-sice:ICE20 -spdb -loc \"installer/lang/en-us.wxl\""

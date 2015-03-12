@@ -3,11 +3,11 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
         <UI>      
-            <Dialog Id="HadoukenWelcomeDlg" Width="370" Height="270" Title="[ProductName] [Setup]" NoMinimize="yes">
+            <Dialog Id="WelcomeDlg" Width="370" Height="270" Title="[ProductName] [Setup]" NoMinimize="yes">
                 <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
                 <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
 
-                <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="HadoukenUI_Bmp_Banner" />
+                <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="HdknUI_Bmp_Banner" />
 
                 <Control Id="Title" Type="Text" X="10" Y="12" Width="200" Height="15" Transparent="yes" NoPrefix="yes" Text="{\DlgTitleFont}Install [ProductName]" />
 
@@ -16,7 +16,7 @@
                 </Control>
 
                 <Control Id="LicenseText" Type="ScrollableText" X="10" Y="80" Width="350" Height="145" Sunken="yes" TabSkip="no">
-                    <Text SourceFile="!(wix.WixUILicenseRtf)" />
+                    <Text SourceFile="!(wix.HdknUILicenseRtf)" />
                 </Control>
 
                 <!-- Version and revision -->
@@ -28,13 +28,9 @@
                 <Control Id="Next" Type="PushButton" X="236" Y="245" Width="56" Height="17" Default="yes" Text="Next" />
 
                 <Control Id="Cancel" Type="PushButton" X="304" Y="245" Width="56" Height="17" Text="Cancel">
-                    <Publish Event="SpawnDialog" Value="HadoukenCancelDlg">1</Publish>
+                    <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
                 </Control>
             </Dialog>
-
-            <InstallUISequence>
-                <Show Dialog="HadoukenWelcomeDlg" After="CostFinalize">NOT Installed</Show>
-            </InstallUISequence>
         </UI>
     </Fragment>
 </Wix>

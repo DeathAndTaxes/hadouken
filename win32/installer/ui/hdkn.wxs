@@ -22,9 +22,14 @@ First-time install dialog sequence:
             <TextStyle Id="DlgTitleFont" FaceName="Tahoma" Size="14" />
 
             <DialogRef Id="WelcomeDlg" />
+            <DialogRef Id="UpgradeDlg" />
             <DialogRef Id="ConfigureDlg" />
             <DialogRef Id="CustomizeDlg" />
             <DialogRef Id="ProgressDlg" />
+            <DialogRef Id="ErrorDlg" />
+            <DialogRef Id="FatalError" />
+            <DialogRef Id="FilesInUse" />
+            <DialogRef Id="UserExit" />
 
             <Publish Dialog="WelcomeDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
             <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="ConfigureDlg">1</Publish>
@@ -36,7 +41,9 @@ First-time install dialog sequence:
             <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
 
             <InstallUISequence>
-                <Show Dialog="WelcomeDlg" After="CostFinalize">NOT Installed</Show>
+                <Show Dialog="WelcomeDlg" After="CostFinalize">NOT WIX_UPGRADE_DETECTED AND NOT Installed</Show>
+                <Show Dialog="UpgradeDlg" After="CostFinalize">WIX_UPGRADE_DETECTED</Show>
+
                 <Show Dialog="ProgressDlg" Before="ExecuteAction" />
                 <Show Dialog="ExitDialog" OnExit="success" Overridable="yes" />
             </InstallUISequence>

@@ -63,6 +63,7 @@
                       Name="InstallDir" />
     </Property>
     
+    <Property Id="MSIRESTARTMANAGERCONTROL" Value="Disable"/>
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
 
     <Property Id="HDKN_BUILDVERSION" Value="$(var.BuildVersion)" />

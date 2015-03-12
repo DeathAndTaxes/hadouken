@@ -3,13 +3,13 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
         <UI>      
-            <Dialog Id="ProgressDlg" Width="370" Height="270" Title="[ProductName] [Setup]" NoMinimize="yes">
+            <Dialog Id="ProgressDlg" Width="370" Height="270" Title="[ProductName]" Modeless="yes">
                 <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
                 <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
 
                 <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="HdknUI_Bmp_Banner" />
 
-                <Control Id="Title" Type="Text" X="10" Y="12" Width="200" Height="15" Transparent="yes" NoPrefix="yes" Text="{\DlgTitleFont}Installing Hadouken..." />
+                <Control Id="Title" Type="Text" X="10" Y="12" Width="200" Height="20" Transparent="yes" NoPrefix="yes" Text="{\DlgTitleFont}Installing Hadouken..." />
 
                 <Control Id="ActionText" Type="Text" X="70" Y="100" Width="285" Height="10">
                     <Subscribe Event="ActionText" Attribute="Text" />

@@ -33,10 +33,17 @@ First-time install dialog sequence:
 
             <Publish Dialog="CustomizeDlg" Control="Back" Event="NewDialog" Value="ConfigureDlg">1</Publish>
 
+            <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+
             <InstallUISequence>
                 <Show Dialog="WelcomeDlg" After="CostFinalize">NOT Installed</Show>
                 <Show Dialog="ProgressDlg" Before="ExecuteAction" />
+                <Show Dialog="ExitDialog" OnExit="success" Overridable="yes" />
             </InstallUISequence>
+
+            <AdminUISequence>
+                <Show Dialog="ExitDialog" OnExit="success" Overridable="yes" />
+            </AdminUISequence>
         </UI>
     </Fragment>
 </Wix>

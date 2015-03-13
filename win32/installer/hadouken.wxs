@@ -31,6 +31,7 @@
       <ComponentGroupRef Id="CoreComponents" />
       <ComponentGroupRef Id="ExtensionComponents" />
       <ComponentGroupRef Id="ServiceComponents" />
+      <ComponentGroupRef Id="RegistryComponents" />
 
       <Feature Id="FirewallException"
                Title="Windows Firewall Exception"
@@ -60,7 +61,26 @@
                       Type="raw"
                       Root="HKLM"
                       Key="Software\Hadouken"
-                      Name="InstallDir" />
+                      Name="InstallDir"
+                      Win64="$(var.IsWin64)" />
+    </Property>
+
+    <Property Id="PREV_VERSION">
+      <RegistrySearch Id="SearchPrevVersionRegistry"
+                      Type="raw"
+                      Root="HKLM"
+                      Key="Software\Hadouken"
+                      Name="Version"
+                      Win64="$(var.IsWin64)" />
+    </Property>
+
+    <Property Id="PREV_GITREV">
+      <RegistrySearch Id="SearchPrevGitRevRegistry"
+                      Type="raw"
+                      Root="HKLM"
+                      Key="Software\Hadouken"
+                      Name="GitRevision"
+                      Win64="$(var.IsWin64)" />
     </Property>
     
     <Property Id="MSIRESTARTMANAGERCONTROL" Value="Disable"/>

@@ -169,14 +169,23 @@ Task("Create-Msi-Package")
                 { "BuildVersion",       version },
                 { "GitRevision",        gitRev }
             },
-            Extensions = new[] { "WixFirewallExtension" },
+            Extensions = new []
+            {
+                "WixFirewallExtension",
+                "./tools/msiext-1.4/WixExtensions/WixSystemToolsExtension.dll"
+            },
             OutputDirectory = "./build/wixobj",
             ToolPath = "./libs/WiX.Toolset/tools/wix/candle.exe"
         });
 
         WiXLight("./build/wixobj/*.wixobj", new LightSettings
         {
-            Extensions = new[] { "WixUtilExtension", "WixFirewallExtension" },
+            Extensions = new []
+            {
+                "WixUtilExtension",
+                "WixFirewallExtension",
+                "./tools/msiext-1.4/WixExtensions/WixSystemToolsExtension.dll"
+            },
             OutputFile = outDirectory + "/hadouken-" + version + "-win32.msi",
             ToolPath = "./libs/WiX.Toolset/tools/wix/light.exe",
             RawArguments = "-spdb -loc \"installer/lang/en-us.wxl\""

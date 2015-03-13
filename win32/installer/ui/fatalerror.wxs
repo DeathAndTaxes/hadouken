@@ -23,14 +23,6 @@
                 <Control Id="Title" Type="Text" X="135" Y="20" Width="220" Height="60" Transparent="yes" NoPrefix="yes" Text="Title" />
                 <Control Id="Description" Type="Text" X="135" Y="70" Width="220" Height="80" Transparent="yes" NoPrefix="yes" Text="Description 1 Description 2" />
             </Dialog>
-
-            <InstallUISequence>
-                <Show Dialog="FatalError" OnExit="error" Overridable="yes" />
-            </InstallUISequence>
-
-            <AdminUISequence>
-                <Show Dialog="FatalError" OnExit="error" Overridable="yes" />
-            </AdminUISequence>
         </UI>
     </Fragment>
 </Wix>

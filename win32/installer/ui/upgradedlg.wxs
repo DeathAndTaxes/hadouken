@@ -12,7 +12,17 @@
                 <Control Id="Title" Type="Text" X="10" Y="12" Width="200" Height="20" Transparent="yes" NoPrefix="yes" Text="{\DlgTitleFont}Upgrade [ProductName]" />
 
                 <Control Id="Description" Type="Text" X="10" Y="50" Width="350" Height="45" Transparent="yes" NoPrefix="yes">
-                    <Text>Detected previous version of Hadouken.</Text>
+                    <Text>A previous version of Hadouken is already installed. Pressing 'Upgrade' will stop the Hadouken service, upgrade any existing files and then restart it.</Text>
+                </Control>
+
+                <Control Id="PrevTitle" Type="Text" X="10" Y="88" Width="350" Height="12" Transparent="yes" NoPrefix="yes" Text="Detected:" />
+
+                <Control Id="PrevVersion" Type="Text" X="10" Y="100" Width="350" Height="12" Transparent="yes" NoPrefix="yes">
+                    <Text>• v[PREV_VERSION] (rev: [PREV_GITREV])</Text>
+                </Control>
+
+                <Control Id="PrevInstallDir" Type="Text" X="10" Y="112" Width="350" Height="12" Transparent="yes" NoPrefix="yes">
+                    <Text>• Installed at '[INSTALLDIR]'</Text>
                 </Control>
 
                 <!-- Version and revision -->
